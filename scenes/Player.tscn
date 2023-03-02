@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/SelectionArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/character.tscn" type="PackedScene" id=4]
+[ext_resource path="res://audio/sfx/Walk.wav" type="AudioStream" id=5]
+[ext_resource path="res://audio/sfx/SelectCharacter.wav" type="AudioStream" id=6]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.833631
+height = 3.72098
+
+[node name="Player" type="KinematicBody"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="character" parent="." instance=ExtResource( 4 )]
+
+[node name="SelectionArea" parent="character" groups=["player"] instance=ExtResource( 2 )]
+
+[node name="CollisionShape" type="CollisionShape" parent="character/SelectionArea"]
+transform = Transform( 1.05, 0, 0, 0, -4.5897e-08, -1.05, 0, 1.05, -4.5897e-08, 0, -0.48862, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.48862, 0 )
+shape = SubResource( 1 )
+
+[node name="FootstepTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Walk" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -3.0
+
+[node name="SelectCharacter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+pitch_scale = 1.2
+
+[connection signal="selection_toggled" from="character/SelectionArea" to="." method="_on_SelectionArea_selection_toggled"]

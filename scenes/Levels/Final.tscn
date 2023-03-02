@@ -1,0 +1,170 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scenes/robots.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/ButtonStyle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://fonts/Oxanium-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scripts/Final.gd" type="Script" id=4]
+[ext_resource path="res://audio/sfx/SelectMenut.wav" type="AudioStream" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 230
+outline_size = 18
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 1, 1, 1, 0 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+background_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Main/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Main/ColorRect:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "fade_in"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/path = NodePath("Main/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ), Vector2( -1920, 0 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "fade_out"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Main/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Main/ColorRect:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ), Vector2( 1920, 1080 ) ]
+}
+
+[node name="Final" type="Spatial"]
+script = ExtResource( 4 )
+
+[node name="Main" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VictoryLabel" type="Label" parent="Main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -472.0
+margin_top = -476.0
+margin_right = 493.0
+margin_bottom = -245.0
+custom_colors/font_color = Color( 1, 1, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "THE END"
+
+[node name="ReturnButton" type="Button" parent="Main"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -528.0
+margin_top = 348.0
+margin_right = 557.0
+margin_bottom = 499.0
+custom_colors/font_color_disabled = Color( 0.294118, 0.294118, 0.294118, 1 )
+custom_colors/font_color_focus = Color( 1, 0.262745, 0.262745, 1 )
+custom_colors/font_color = Color( 1, 0.262745, 0.262745, 1 )
+custom_colors/font_color_hover = Color( 0.552941, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0.231373, 0.0588235, 0, 1 )
+custom_fonts/font = ExtResource( 2 )
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 2 )
+custom_styles/disabled = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+text = "Return to Menu"
+
+[node name="ColorRect" type="ColorRect" parent="Main"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 0.673798, 0.159285, -0.721543, -0.00192071, 0.976864, 0.213855, 0.738913, -0.142709, 0.658515, -4.19304, 1.50861, -4.8186 )
+fov = 90.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="robots" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.217394, 0, -0.976084, 0, 1, 0, 0.976084, 0, 0.217394, 0, 0, -9 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.370591, 0.683013, 0.62941, -0.683013, -0.258819, 0.683013, 0.62941, -0.683013, 0.370591, 3.27182, 4, -7.51446 )
+
+[node name="DirectionalLight2" type="DirectionalLight" parent="."]
+transform = Transform( -0.729845, -0.345916, -0.589634, -0.524519, 0.836516, 0.158494, 0.438413, 0.42495, -0.791967, -1.75594, 2.59756, -10.972 )
+
+[node name="DirectionalLight3" type="DirectionalLight" parent="."]
+transform = Transform( 0.249592, 0.329056, -0.910728, -0.524519, 0.836516, 0.158494, 0.813992, 0.438136, 0.381384, -3.95303, 2.59756, -7.52264 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/fade_in = SubResource( 5 )
+anims/fade_out = SubResource( 6 )
+
+[node name="SelectMenu" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="pressed" from="Main/ReturnButton" to="." method="_on_ReturnButton_pressed"]

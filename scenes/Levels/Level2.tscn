@@ -1,0 +1,446 @@
+[gd_scene load_steps=32 format=2]
+
+[ext_resource path="res://joystick/virtual_joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://models/meshlib/WallTile.tres" type="MeshLibrary" id=2]
+[ext_resource path="res://scenes/Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Goal.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=6]
+[ext_resource path="res://models/player/RedMaterial.material" type="Material" id=7]
+[ext_resource path="res://textures/floor.png" type="Texture" id=8]
+[ext_resource path="res://audio/sfx/VictorySound.wav" type="AudioStream" id=9]
+[ext_resource path="res://fonts/Oxanium-Bold.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="SpatialMaterial" id=11]
+albedo_color = Color( 1, 0.0431373, 0.054902, 1 )
+
+[sub_resource type="SpatialMaterial" id=12]
+albedo_color = Color( 0.054902, 1, 0.054902, 1 )
+
+[sub_resource type="SpatialMaterial" id=16]
+albedo_color = Color( 1, 1, 0.0588235, 1 )
+
+[sub_resource type="CubeMesh" id=5]
+
+[sub_resource type="SpatialMaterial" id=6]
+albedo_color = Color( 1, 0, 0, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=7]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="SpatialMaterial" id=8]
+albedo_color = Color( 0.054902, 1, 0, 1 )
+
+[sub_resource type="CubeMesh" id=9]
+
+[sub_resource type="ConcavePolygonShape" id=10]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="CubeMesh" id=13]
+
+[sub_resource type="SpatialMaterial" id=15]
+albedo_color = Color( 1, 0.960784, 0, 1 )
+
+[sub_resource type="BoxShape" id=14]
+
+[sub_resource type="CubeMesh" id=1]
+
+[sub_resource type="SpatialMaterial" id=17]
+albedo_texture = ExtResource( 8 )
+uv1_scale = Vector3( 9, 7, 1 )
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( -1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1 )
+
+[sub_resource type="ProceduralSky" id=28]
+sky_top_color = Color( 0.266667, 0.560784, 0.721569, 1 )
+sky_horizon_color = Color( 0.188235, 0.345098, 0.47451, 1 )
+sky_curve = 0.0636399
+ground_bottom_color = Color( 0.184314, 0.235294, 0.286275, 1 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 2
+background_sky = SubResource( 28 )
+ambient_light_color = Color( 0.466667, 0.466667, 0.466667, 1 )
+tonemap_mode = 3
+
+[sub_resource type="DynamicFont" id=24]
+size = 200
+outline_size = 8
+outline_color = Color( 0.14902, 0.14902, 0.14902, 1 )
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=25]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("VictoryScreen:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VictoryScreen/ColorRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VictoryScreen/StageClear:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1620.5, 440 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VictoryScreen/StageClear:visible_characters")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VictoryScreen/ColorRect:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VictoryScreen:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VictoryScreen:rect_size")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ) ]
+}
+
+[sub_resource type="Animation" id=26]
+resource_name = "fade_in"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VictoryScreen/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 1920, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VictoryScreen/StageClear:visible_characters")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, -1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VictoryScreen/ColorRect:rect_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ), Vector2( 1920, 1080 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VictoryScreen:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VictoryScreen/StageClear:rect_position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 299.5, 440 ), Vector2( 2219.5, 440 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+resource_name = "fade_out"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("VictoryScreen/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1920, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VictoryScreen/StageClear:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -1620.5, 440 ), Vector2( 299.5, 440 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VictoryScreen/StageClear:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -1, -1 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VictoryScreen:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VictoryScreen/ColorRect:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1920, 1080 ), Vector2( 1920, 1080 ) ]
+}
+
+[node name="Level2" type="Spatial"]
+script = ExtResource( 6 )
+next_level = "res://scenes/Levels/Level3.tscn"
+
+[node name="Player" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 2.20499, 2 )
+color = ExtResource( 7 )
+
+[node name="Player2" parent="." instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2.20499, -4 )
+color = ExtResource( 7 )
+
+[node name="Goal" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -6, -1, -9 )
+
+[node name="Goal2" parent="." instance=ExtResource( 4 )]
+transform = Transform( 0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 13, -1, 9 )
+
+[node name="RedButton" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 7 )
+color = "red_doors"
+collision = "red_collider"
+button_color = SubResource( 11 )
+
+[node name="GreenButton" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, 4 )
+color = "green_doors"
+collision = "green_collider"
+button_color = SubResource( 12 )
+
+[node name="YellowButton" parent="." instance=ExtResource( 3 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 9 )
+color = "yellow_doors"
+collision = "yellow_collider"
+button_color = SubResource( 16 )
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+mesh_library = ExtResource( 2 )
+data = {
+"cells": PoolIntArray( 5, 0, 0, 8, 0, 0, 65527, 0, 0, 65534, 0, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 8, 1, 0, 65527, 1, 0, 65534, 1, 0, 65535, 1, 0, 8, 2, 0, 65527, 2, 0, 65534, 2, 0, 8, 3, 0, 65527, 3, 0, 65534, 3, 0, 8, 4, 0, 65527, 4, 0, 65534, 4, 0, 8, 5, 0, 65527, 5, 0, 65534, 5, 0, 0, 6, 0, 1, 6, 0, 2, 6, 0, 3, 6, 0, 4, 6, 0, 5, 6, 0, 6, 6, 0, 7, 6, 0, 8, 6, 0, 65527, 6, 0, 65528, 6, 0, 65529, 6, 0, 65530, 6, 0, 65531, 6, 0, 65532, 6, 0, 65533, 6, 0, 65534, 6, 0, 65535, 6, 0, 0, 65529, 0, 1, 65529, 0, 2, 65529, 0, 3, 65529, 0, 4, 65529, 0, 5, 65529, 0, 6, 65529, 0, 7, 65529, 0, 8, 65529, 0, 65527, 65529, 0, 65528, 65529, 0, 65529, 65529, 0, 65530, 65529, 0, 65531, 65529, 0, 65532, 65529, 0, 65533, 65529, 0, 65534, 65529, 0, 65535, 65529, 0, 8, 65530, 0, 65527, 65530, 0, 65534, 65530, 0, 8, 65531, 0, 65527, 65531, 0, 65534, 65531, 0, 2, 65532, 0, 3, 65532, 0, 4, 65532, 0, 5, 65532, 0, 8, 65532, 0, 65527, 65532, 0, 65534, 65532, 0, 5, 65533, 0, 8, 65533, 0, 65527, 65533, 0, 65534, 65533, 0, 5, 65534, 0, 8, 65534, 0, 65527, 65534, 0, 65530, 65534, 0, 65531, 65534, 0, 65532, 65534, 0, 65533, 65534, 0, 65534, 65534, 0, 5, 65535, 0, 8, 65535, 0, 65527, 65535, 0, 65534, 65535, 0 )
+}
+__meta__ = {
+"_editor_clip_": 0,
+"_editor_floor_": Vector3( 0, 0, 0 )
+}
+
+[node name="RedDoors" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="Door2" type="StaticBody" parent="RedDoors" groups=["red_doors"]]
+transform = Transform( 3, 0, 0, 0, 1, 0, 0, 0, 0.3, 1, 1, -7 )
+
+[node name="MeshInstance" type="MeshInstance" parent="RedDoors/Door2"]
+mesh = SubResource( 5 )
+skeleton = NodePath("../..")
+material/0 = SubResource( 6 )
+
+[node name="CollisionShape" type="CollisionShape" parent="RedDoors/Door2" groups=["red_collider"]]
+shape = SubResource( 7 )
+
+[node name="GreenDoors" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="Door1" type="StaticBody" parent="GreenDoors" groups=["green_doors"]]
+transform = Transform( -1.31134e-08, 0, -2, 0, 1, 0, 0.3, 0, -8.74228e-08, 14, 1, 2 )
+
+[node name="MeshInstance" type="MeshInstance" parent="GreenDoors/Door1"]
+material_override = SubResource( 8 )
+mesh = SubResource( 9 )
+skeleton = NodePath("../..")
+
+[node name="CollisionShape" type="CollisionShape" parent="GreenDoors/Door1" groups=["green_collider"]]
+shape = SubResource( 10 )
+
+[node name="YellowDoors" type="Spatial" parent="."]
+
+[node name="Door1" type="StaticBody" parent="YellowDoors" groups=["yellow_doors"]]
+transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 0.3, 0, 0, 0 )
+
+[node name="MeshInstance" type="MeshInstance" parent="YellowDoors/Door1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -10 )
+mesh = SubResource( 13 )
+material/0 = SubResource( 15 )
+
+[node name="CollisionShape" type="CollisionShape" parent="YellowDoors/Door1" groups=["yellow_collider"]]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -10 )
+shape = SubResource( 14 )
+
+[node name="Floor" type="MeshInstance" parent="."]
+transform = Transform( 18, 0, 0, 0, 1, 0, 0, 0, 14, 0, -2, 0 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 17 )
+
+[node name="StaticBody" type="StaticBody" parent="Floor"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Floor/StaticBody"]
+shape = SubResource( 2 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 14, -21 )
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5, 0.866026, 0, -0.866026, 0.5, 0, 13, 13 )
+fov = 73.0
+
+[node name="VictorySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="VictoryScreen" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1920.0
+margin_bottom = 1080.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="StageClear" type="Label" parent="VictoryScreen"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -1620.5
+margin_top = 440.0
+margin_right = -299.498
+margin_bottom = 640.0
+custom_fonts/font = SubResource( 24 )
+text = "Stage Cleared"
+percent_visible = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 25 )
+anims/fade_in = SubResource( 26 )
+anims/fade_out = SubResource( 27 )
+
+[node name="Virtual joystick" parent="." instance=ExtResource( 1 )]
+margin_left = 760.0
+margin_top = -440.0
+margin_right = 960.0
+margin_bottom = -240.0
+rect_scale = Vector2( 2, 2 )
+clampzone_size = 100.0
+action_left = "move_left"
+action_right = "move_right"
+action_up = "move_up"
+action_down = "move_down"
+
+[connection signal="area_entered" from="Goal" to="." method="_on_Goal_area_entered"]
+[connection signal="area_exited" from="Goal" to="." method="_on_Goal_area_exited"]
+[connection signal="area_entered" from="Goal2" to="." method="_on_Goal2_area_entered"]
+[connection signal="area_exited" from="Goal2" to="." method="_on_Goal2_area_exited"]
